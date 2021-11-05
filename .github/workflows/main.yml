@@ -58,5 +58,5 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: amongus-todo/app:latest
+        tags: meistercw/amongus-todo:latest
     
