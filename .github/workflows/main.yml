@@ -61,6 +61,7 @@ jobs:
         tags: meistercw/amongus-todo:latest
         
   deploy:
+    needs: [run-tests, docker-build-image-synk-scan]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
