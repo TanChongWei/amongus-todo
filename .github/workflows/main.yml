@@ -49,7 +49,7 @@ jobs:
     # Dockerhub login
       uses: docker/login-action@v1
       with:
-        username: ${{ secrets.DOCKERHUB_USER }}
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         
    # Build Docker image   
@@ -65,5 +65,5 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: amongustodo/app:latest
+        tags: amongus-todo/app:latest
     
