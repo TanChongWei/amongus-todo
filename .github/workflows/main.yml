@@ -31,10 +31,31 @@ jobs:
     
     - name: Docker image
       run: docker build -t amongustodo/test .
-      
+    
+    #Snyk security scan on docker image
     - name: Snyk scan on Docker image
       uses: snyk/actions/docker@master
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with: 
         image: amongustodo/test
+    
+  docker-push:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker Hub Login
+    # Dockerhub login
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    
+    # Dockerhub push
+    - name: Docker build and push
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: amongustodo/app:latest
+    
