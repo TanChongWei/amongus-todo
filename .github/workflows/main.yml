@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  npm-tests:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
     # Install dependencies and runs tests
@@ -41,6 +41,7 @@ jobs:
         image: amongustodo/test
     
   docker-push:
+    needs: [run-tests, docker-build-image-synk-scan]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
