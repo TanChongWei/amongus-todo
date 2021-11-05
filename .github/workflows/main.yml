@@ -21,6 +21,7 @@ jobs:
   docker-build-image-synk-scan:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     # Build docker image
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
@@ -29,7 +30,6 @@ jobs:
       uses: docker/setup-buildx-action@v1
     
     - name: Docker image
-      uses: actions/checkout@v2
       run: docker build -t amongustodo/test .
       
     - name: Snyk scan on Docker image
