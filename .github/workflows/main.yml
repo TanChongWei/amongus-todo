@@ -58,7 +58,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: meistercw/amongus-todo:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/amongus-todo:latest
         
   deploy:
     needs: [run-tests, docker-build-image-synk-scan]
