@@ -60,9 +60,7 @@ jobs:
 
     - name: Build and push image to Amazon ECR
       id: build-image
-      env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        run: |
+      run: |
           docker build -t cwdevtoolscapstone .
           docker tag cwdevtoolscapstone:latest 134923971410.dkr.ecr.ap-southeast-1.amazonaws.com/cwdevtoolscapstone:latest
           docker push 134923971410.dkr.ecr.ap-southeast-1.amazonaws.com/cwdevtoolscapstone:latest
