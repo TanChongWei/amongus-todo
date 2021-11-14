@@ -74,8 +74,8 @@ jobs:
         key: ${{ secrets.KEY }}
         port: 22
         script: |
-          docker pull 134923971410.dkr.ecr.ap-southeast-1.amazonaws.com/cwdevtoolscapstone:latest
-          docker run -d -p 80:3000 134923971410.dkr.ecr.ap-southeast-1.amazonaws.com/cwdevtoolscapstone:latest
+          docker pull meistercw/devtoolscapstone:latest
+          docker run -d -p 80:3000 meistercw/devtoolscapstone:latest
 
     
   # docker-push:
