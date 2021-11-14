@@ -2,9 +2,9 @@ name: Dev Tools HW
 
 on:
   push:
-    branches: [ master ]
+    branches: [ capstone ]
   pull_request:
-    branches: [ master ]
+    branches: [ capstone ]
 
 jobs:
   run-tests:
@@ -58,5 +58,5 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: amongus-todo/app:latest
+        tags: devtoolscapstone/app:latest
     
