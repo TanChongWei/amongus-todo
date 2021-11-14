@@ -40,7 +40,7 @@ jobs:
       with: 
         image: amongustodo/test
     
-  AWS-ECR-push:
+  AWS-ECR-push-and-deploy:
     needs: [run-tests, docker-build-image-synk-scan]
     runs-on: ubuntu-latest
     steps:
@@ -64,20 +64,18 @@ jobs:
           docker build -t cwdevtoolscapstone .
           docker tag cwdevtoolscapstone:latest 134923971410.dkr.ecr.ap-southeast-1.amazonaws.com/cwdevtoolscapstone:latest
           docker push 134923971410.dkr.ecr.ap-southeast-1.amazonaws.com/cwdevtoolscapstone:latest
-          echo "docker image pushed to AWS ECR"
-    
-    AWS-deploy:
-      needs: [AWS-ECR-push]
-      - name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: 22
-          script: |
-            whoami
-            echo "handshake established!"
+          echo "docker image pushed to AWS ECR" 
+          
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: 22
+        script: |
+          whoami
+          echo "handshake established!"
 
     
   # docker-push:
