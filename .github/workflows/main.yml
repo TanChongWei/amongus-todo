@@ -65,6 +65,20 @@ jobs:
           docker push 134923971410.dkr.ecr.ap-southeast-1.amazonaws.com/cwdevtoolscapstone:latest
           echo "docker image pushed to AWS ECR"
     
+    AWS-deploy:
+      needs: [AWS-ECR-push]
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: 22
+          script: |
+            whoami
+            echo "handshake established!"
+
+    
   # docker-push:
   #   needs: [run-tests, docker-build-image-synk-scan]
   #   runs-on: ubuntu-latest
