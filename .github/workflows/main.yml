@@ -74,7 +74,6 @@ jobs:
         key: ${{ secrets.KEY }}
         port: 22
         script: |
-          docker login -u AWS -p $(aws ecr get-login-password) https://134923971410.dkr.ecr.us-east-2.amazonaws.com
           docker pull 134923971410.dkr.ecr.ap-southeast-1.amazonaws.com/cwdevtoolscapstone:latest
           docker run -d -p 80:3000 134923971410.dkr.ecr.ap-southeast-1.amazonaws.com/cwdevtoolscapstone:latest
     
