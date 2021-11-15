@@ -74,27 +74,7 @@ jobs:
         key: ${{ secrets.KEY }}
         port: 22
         script: |
-          docker pull meistercw/devtoolscapstone:latest
-          docker run -d -p 80:3000 meistercw/devtoolscapstone:latest
-
-    
-  # docker-push:
-  #   needs: [run-tests, docker-build-image-synk-scan]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Docker Hub Login
-  #   # Dockerhub login
-  #     uses: docker/login-action@v1
-  #     with:
-  #       username: ${{ secrets.DOCKERHUB_USERNAME }}
-  #       password: ${{ secrets.DOCKERHUB_TOKEN }}
-    
-  #   # Dockerhub push
-  #   - name: Docker build and push
-  #     id: docker_build
-  #     uses: docker/build-push-action@v2
-  #     with:
-  #       push: true
-  #       tags: ${{ secrets.DOCKERHUB_USERNAME }}/devtoolscapstone:latest
+          docker login -u AWS -p $(aws ecr get-login-password) https://134923971410.dkr.ecr.us-east-2.amazonaws.com
+          docker pull 134923971410.dkr.ecr.ap-southeast-1.amazonaws.com/cwdevtoolscapstone:latest
+          docker run -d -p 80:3000 134923971410.dkr.ecr.ap-southeast-1.amazonaws.com/cwdevtoolscapstone:latest
     
