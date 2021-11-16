@@ -1,3 +1,18 @@
+# PowerX Fundamentals in Developer Tools - Homework 3
+
+This project involves setting up a CI/CD pipeline for an already existing application. The following steps are involved:
+- Creation of a Dockerfile for the code base
+- Running of tests to ensure that the application is working properly
+- Running a Docker build using a docker build action
+- Running a security check using snyk against the docker image to check for vulnerabilities
+- Pushing the image onto Docker hub using a docker login action and a docker push action
+- Deploying the application to Heroku using a Heroku Github action
+
+![image](https://user-images.githubusercontent.com/72724926/141983293-0a79b65a-5d4c-4067-bf73-ad4a2392c7de.png)
+
+Heroku application link:
+https://cw-amongus-todo.herokuapp.com/
+
 # Among Us TODOs API
 
 ![Among Us banner](docs/img/banner.jpg)
