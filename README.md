@@ -1,3 +1,44 @@
+# PowerX Fundamentals in Developer Tools - Capstone Project
+
+This capstone project has 2 requirements: 
+- Build a CI/CD pipeline for an already existing application
+- The infrastructure required for this deployment has to be provided by terraform
+
+For this capstone project, I have used the AWS Elastic Container Registry (ECR) to host my docker image and have deployed my docker image to an EC2 instance.
+
+## CI CD pipeline
+The CI/CD pipeline involves the following tasks
+- Running of test cases to ensure the functionality of the app
+- Building and scanning of the docker image
+- Pushing the docker image onto AWS ECR
+- Deploying the image onto EC2 by using remote ssh commands to pull the image from AWS ECR and run the image 
+
+## Infrastructure provisioned by terraform
+Terraform is utilised to defined the following infrastructure
+- Creating the necessary s3 backend bucket
+- EC2 instance where the app will be deployed to (and the security group)
+- ECR where docker image will be hosted
+- aws_key_pair referencing a tls_private_key
+
+## End results
+
+CI/CD pipeline status:
+
+![image](https://user-images.githubusercontent.com/72724926/141985510-dfd584c5-2803-4141-823c-6f94692eb2bd.png)
+
+AWS ECR with hosted image:
+
+![image](https://user-images.githubusercontent.com/72724926/141985357-57563594-7410-43bc-8268-78a1739bec6c.png)
+
+Instance details with corresponding key pair:
+
+![image](https://user-images.githubusercontent.com/72724926/141984981-892e4d0d-e4d1-4362-a40b-08676f0ee260.png)
+
+Deployed app:
+http://175.41.163.76
+
+---
+
 # Among Us TODOs API
 
 ![Among Us banner](docs/img/banner.jpg)
